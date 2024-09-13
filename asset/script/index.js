@@ -1,3 +1,6 @@
+// https://quizapi.io/api/v1/questions?difficulty=Easy&limit=5&apiKey=0x9ETGcteUhoM6oydyYmcclYYHwZsvTnryQR4kb1
+
+
 const qaObject = [
   {
     question: "What is the capital of France?",
