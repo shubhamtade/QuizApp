@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h1>Simple Quiz</h1>
-      <div class="que"><p>1. What is your name ?</p></div>
+      <div class="que"><p></p></div>
       <div class="option">
         <!-- <li>Tade</li>
         <li>Shubham</li>
@@ -17,10 +17,24 @@
         <li>Varsha</li> -->
       </div>
 
-      <div class="next-btn">
+      <div class="next-btn btn">
         <button class="button-29" role="button" id="next-btn">Next</button>
       </div>
     </div>
+
+    <div class="result_content">
+      <div class="score">
+        <p>Your result : 20/40</p>
+        <p>PASS</p>
+      </div>
+
+      <div class="reset-btn btn">
+        <button class="button-29" role="button" onclick="reset_all()">
+          Reset
+        </button>
+      </div>
+    </div>
+
     <script src="asset/script/index.js"></script>
   </body>
 </html>

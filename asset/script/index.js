@@ -94,11 +94,14 @@ const qaObject = [
 const que = document.querySelector(".que");
 const option = document.querySelector(".option");
 const next_btn = document.querySelector("#next-btn");
+const restBtn = document.querySelector(".rest-btn");
+
 let currentQuestionIndex = 0;
+let userAnswers = [];
 
 function start() {
   que.innerHTML = `${currentQuestionIndex + 1}. ${
-    qaObject[currentQuestionIndex].question
+    qaObject[currentQuestionIndex]?.question || result()
   }`;
 
   option.innerHTML = "";
@@ -107,21 +110,44 @@ function start() {
     const list = document.createElement("li");
     list.textContent = qaObject[currentQuestionIndex].answer[i].text;
     option.appendChild(list);
+
+    list.addEventListener("click", () => {
+      userAnswers[currentQuestionIndex] =
+        qaObject[currentQuestionIndex].answer[i].correct; // Store the index of the selected answer
+    });
   }
 
-  document.querySelector(".next-btn").style.display = "flex";
+  next_btn.style.display = "flex";
+}
+
+function reset_all() {
+  document.querySelector(".container").style.display = "block";
+  document.querySelector(".result_content").style.display = "none";
+
+  currentQuestionIndex = 0;
+  userAnswers = [];
+
+  start();
+}
+
+function result() {
+  console.log(userAnswers);
+
+  document.querySelector(".container").style.display = "none";
+  document.querySelector(".result_content").style.display = "flex";
+
+  document.querySelector(".score").innerHTML = `<p>Your result : ${
+    userAnswers.filter(Boolean).length
+  }/${qaObject.length}</p>
+  
+        <p>Que. Attempt : ${userAnswers.length}</p>`;
 }
 
 function updateQue() {
   if (currentQuestionIndex !== qaObject.length) {
     currentQuestionIndex += 1;
 
-    // option.reset();
-
     start();
-  } else {
-    // result();
-    console.log("RESULT");
   }
 }
 
